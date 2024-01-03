@@ -22,7 +22,7 @@ const Product = () => {
   };
   return (
     <div
-      className='container max-w-[1440px] md:px-[70px] flex flex-col items-center gap-12 overflow-x-hidden'
+      className='container-layout pt-[0px] overflow-x-hidden'
       id='headerProduct'
     >
       {/* Hero Header Product Section */}

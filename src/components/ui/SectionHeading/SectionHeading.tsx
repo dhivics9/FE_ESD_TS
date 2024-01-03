@@ -24,12 +24,19 @@ const HeadingTop = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const HeadingBottom = ({ children }: { children: React.ReactNode }) => {
+const HeadingBottom = ({
+  children,
+  className = 'text-[24px] md:text-[28px]',
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
   return (
     <Heading
-      className={
-        'font-inter text-[24px] md:text-[28px] text-center font-semibold leading-11 tracking-tighter'
-      }
+      className={classNames(
+        'font-inter text-center font-semibold leading-11 tracking-tighter',
+        className,
+      )}
     >
       {children}
     </Heading>

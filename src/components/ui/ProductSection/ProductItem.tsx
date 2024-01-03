@@ -1,6 +1,4 @@
 import { Button } from '../../elements/Button/Button';
-import Heading from '../../elements/Heading/Heading';
-import Paragraph from '../../elements/Paragraph/Paragraph';
 import SectionHeading from '../SectionHeading';
 
 interface ProductItemProps {

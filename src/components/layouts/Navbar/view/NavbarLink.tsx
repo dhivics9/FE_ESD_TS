@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const links = [
   { path: '', name: 'Home' },
   { path: 'About', name: 'About' },
+  { path: 'Team', name: 'Team' },
   { path: 'Product', name: 'Product' },
   { path: 'Achievements', name: 'Achievements' },
-  { path: 'OpenSource', name: 'Open Source' },
 ];
 
 interface NavbarLinkProps {
