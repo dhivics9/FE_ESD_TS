@@ -199,16 +199,12 @@ const About = () => {
               </Heading>
             </div>
 
-            <Heading
-              className={
-                'text-center text-[#667085] px-5 max-sm:px-0 font-inter text-[20px] font-normal leading-[30px]'
-              }
-            >
+            <Paragraph className='text-center'>
               In our UI/UX Division, we cultivate creativity and expertise to
               craft seamless user experiences that leave a lasting impact. Join
               us to elevate your design skills and shape the future of digital
               interactions.
-            </Heading>
+            </Paragraph>
           </div>
         </div>
 

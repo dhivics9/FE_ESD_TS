@@ -9,7 +9,7 @@ interface SectionHeadingProps {
 const SectionHeading = ({ children }: SectionHeadingProps) => {
   return (
     <div className='space-y-6'>
-      <div className='px-[32px] max-w-[768px]'>
+      <div className='max-w-[768px]'>
         <div className='space-y-[20px]'>{children}</div>
       </div>
     </div>

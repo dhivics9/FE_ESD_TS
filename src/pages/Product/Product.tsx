@@ -63,42 +63,6 @@ const Product = () => {
 
       {/* Project Section */}
       <ProductList products={ProductData} />
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
-        <div>
-          <img src={'/'} alt='' />
-        </div>
-        <div className='flex flex-col gap-[21px]'>
-          <Paragraph className='text-[16px] text-primaryNormal font-semibold leading-6'>
-            Meet the Brilliant Minds Behind Our Success
-          </Paragraph>
-
-          <Heading className='text-[36px] leading-[44px] tracking-[-0.72px]'>
-            Manchester United Landing Page Redesign
-          </Heading>
-          <div className='flex gap-4'>
-            <Button variant='secondary'>Redesign</Button>
-            <Button variant='secondary'>Website</Button>
-          </div>
-          <Paragraph className='text-[20px] leading-7'>
-            Our Collaboration with UK Football Club called, Manchester United.
-            Here we do Redesign in UX Problem especially in User Retention and
-            Develop the Design into the code with React Framework.
-          </Paragraph>
-          <div className='flex gap-14'>
-            {[1, 2, 3].map((item) => (
-              <div key={item} className='bg-[#F9F5FF] p-2 rounded-full'>
-                <div className='bg-[#F4EBFF] p-2 rounded-full'>
-                  <img src={'/'} alt='' />
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className='grid grid-cols-2 gap-4'>
-            <Button>Mockup Showcase</Button>
-            <Button variant='secondary'>Repository</Button>
-          </div>
-        </div>
-      </div>
       {/* End of Project Section */}
     </div>
   );

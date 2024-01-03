@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Button } from '../../elements/Button/Button';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import ValueList from '../ValueSection/ValueList';
@@ -26,6 +26,21 @@ interface ProductListProps {
 }
 
 const ProductList = ({ products }: ProductListProps) => {
+  const [currentPath, setCurrentPath] = useState('');
+
+  useEffect(() => {
+    setCurrentPath(window.location.pathname);
+  }, []);
+  return currentPath == '/Product' ? (
+    products.map((product) => (
+      <ProductItem key={product.name} product={product} />
+    ))
+  ) : (
+    <ProductHomeLayout products={products} />
+  );
+};
+
+const ProductHomeLayout = ({ products }: ProductListProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleClick = useCallback(
@@ -41,13 +56,16 @@ const ProductList = ({ products }: ProductListProps) => {
     },
     [currentIndex],
   );
+
   return (
-    <div className='flex flex-col items-center space-y-[48px] lg:space-y-[64px]'>
+    <div
+      className={`flex flex-col items-center space-y-[48px] lg:space-y-[64px]`}
+    >
       <ProductItem
         key={`${products[currentIndex].name}${currentIndex}`}
         product={products[currentIndex]}
       />
-      <div className='flex flex-col items-center space-y-[48px]'>
+      <div className={`flex flex-col items-center space-y-[48px]`}>
         <ButtonGroup>
           <Button
             variant={'secondary'}

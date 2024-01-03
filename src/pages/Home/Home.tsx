@@ -79,12 +79,7 @@ const Home = () => {
 
       {/* Project Section */}
       <div className='container-layout'>
-        <div className='space-y-[16px] flex flex-col items-center w-full'> 
-          <SectionHeading>
-            <SectionHeading.HeadingTop>
-              Our Product Showcase
-            </SectionHeading.HeadingTop>
-          </SectionHeading>
+        <div className='space-y-[16px] flex flex-col items-center w-full'>
           <ProductList products={ProductData} />
         </div>
       </div>

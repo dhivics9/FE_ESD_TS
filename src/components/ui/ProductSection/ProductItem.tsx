@@ -1,3 +1,6 @@
+import { Button } from '../../elements/Button/Button';
+import Heading from '../../elements/Heading/Heading';
+import Paragraph from '../../elements/Paragraph/Paragraph';
 import SectionHeading from '../SectionHeading';
 
 interface ProductItemProps {
@@ -17,58 +20,42 @@ interface ProductItemProps {
 
 const ProductItem = ({ product }: ProductItemProps) => {
   return (
-    <div className='space-y-[32px] lg:space-y-[64px]'>
-      <SectionHeading>
-        <div className=' lg:space-y-[20px]'>
-          <SectionHeading.HeadingBottom>
-            {product.name}
-          </SectionHeading.HeadingBottom>
-          <SectionHeading.ParagraphBottom>
+    <>
+      {/* Project section */}
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
+        <div>
+          <img src={'./mu2.webp'} alt='' />
+        </div>
+        <div className='flex flex-col gap-[21px]'>
+          <SectionHeading>
+            <div className='grid place-items-start'>
+              <SectionHeading.HeadingTop>
+                {product.name}
+              </SectionHeading.HeadingTop>
+              <SectionHeading.HeadingBottom>
+                {product.name}
+              </SectionHeading.HeadingBottom>
+            </div>
+          </SectionHeading>
+          <div className='flex gap-4'>
+            <Button className='disabled hover:bg-none' variant='secondary'>
+              Redesign
+            </Button>
+            <Button variant='secondary'>Website</Button>
+          </div>
+          <SectionHeading.ParagraphBottom className={'text-start'}>
             {product.description}
           </SectionHeading.ParagraphBottom>
-        </div>
-      </SectionHeading>
-      <div className='container flex flex-col max-w-[1280px] px-[32px] items-center gap-[96px] max-lg:gap-[32px]'>
-        <div className='max-w-[737px] max-h-[558px] border'>
-          <img
-            src={'./mu2.png'}
-            className='sm:block w-full h-auto'
-            alt=''
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
+
+          <div className='grid grid-cols-2 gap-4'>
+            <Button>Mockup Showcase</Button>
+            <Button variant='secondary'>Repository</Button>
+          </div>
         </div>
       </div>
-    </div>
+      {/* End of Project section */}
+    </>
   );
 };
-
-const ProductItemProductPage = ({ product }: ProductItemProps) => {
-  return (
-    <div className='space-y-[32px] lg:space-y-[64px]'>
-      <SectionHeading>
-        <div className=' lg:space-y-[20px]'>
-          <SectionHeading.HeadingBottom>
-            {product.name}
-          </SectionHeading.HeadingBottom>
-          <SectionHeading.ParagraphBottom>
-            {product.description}
-          </SectionHeading.ParagraphBottom>
-        </div>
-      </SectionHeading>
-      <div className='container flex flex-col max-w-[1280px] px-[32px] items-center gap-[96px] max-lg:gap-[32px]'>
-        <div className='max-w-[737px] max-h-[558px] border'>
-          <img
-            src={'./mu2.png'}
-            className='sm:block w-full h-auto'
-            alt=''
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-ProductItem.ProductPage = ProductItemProductPage;
 
 export default ProductItem;
