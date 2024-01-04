@@ -18,7 +18,7 @@ const SectionHeading = ({ children }: SectionHeadingProps) => {
 
 const HeadingTop = ({ children }: { children: React.ReactNode }) => {
   return (
-    <h3 className='text-[#6941C6] text-center font-inter text-[16px] md:text-[14px] font-semibold leading-6'>
+    <h3 className='text-[#6941C6] tex t-center font-inter text-[16px] md:text-[14px] font-semibold leading-6'>
       {children}
     </h3>
   );
