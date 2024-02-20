@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { Button } from '../../components/elements/Button/Button';
-import Heading from '../../components/elements/Heading/Heading';
-import Paragraph from '../../components/elements/Paragraph/Paragraph';
 import HeadingBanner from '../../components/ui/HeadingBanner/HeadingBanner';
 import ProductList from '../../components/ui/ProductSection/ProductList';
 import { ProductData } from '../../components/ui/ProductSection/ProductData';
