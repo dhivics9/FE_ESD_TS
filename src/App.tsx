@@ -1,21 +1,24 @@
+import { useEffect, useState } from 'react';
 import './App.css';
-
-import CTALayout from './components/layouts/CTALayout/CTALayout';
-import Footer from './components/layouts/Footer/Footer';
-import Navbar from './components/layouts/Navbar/Navbar';
 import AppRoutes from './routes/Routes';
+import { useLocation } from 'react-router-dom';
+import LoadingPage from './components/layouts/LoadingPage';
 
 function App() {
-  return (
-    <div className=''>
-      <Navbar />
-      <div className='pt-[80px]'>
-        <AppRoutes />
-      </div>
-      <CTALayout />
-      <Footer />
-    </div>
-  );
+  const [loading, setloading] = useState<boolean>(true);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setloading(false);
+    });
+  }, []);
+
+  return loading ? <LoadingPage /> : <AppRoutes />;
 }
 
 export default App;

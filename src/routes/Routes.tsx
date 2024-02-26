@@ -1,47 +1,30 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
-import LoadingPage from '../components/layouts/LoadingPage';
-
-const user: User = { name: 'test', id: -1, email: 'esdlab', token: 'test' };
-
-const load = (Component: any) => (props: any) => (
-  <Suspense fallback={<LoadingPage />}>
-    <Component {...props} />
-  </Suspense>
-);
-
-const Login = load(lazy(() => import('../pages/Login')));
-const About = load(lazy(() => import('../pages/About')));
-const Achievements = load(lazy(() => import('../pages/Achievements')));
-const Admin = load(lazy(() => import('../pages/Admin')));
-const Home = load(lazy(() => import('../pages/Home')));
-const OpenSource = load(lazy(() => import('../pages/OpenSource')));
-const Product = load(lazy(() => import('../pages/Product')));
-const Team = load(lazy(() => import('../pages/Team')));
-
-const ProtectedRoute: React.FC<{ user: User }> = ({ user }) => {
-  if (user.id < 0) {
-    return <Navigate replace to='/login' />;
-  }
-
-  return (
-    <Routes>
-      <Route index element={<Admin />} />
-    </Routes>
-  );
-};
+import { Route, Routes } from "react-router-dom";
+import CommonLayout from "../components/layouts/CommonLayout";
+import Sidebar from "../components/layouts/Sidebar";
+import ProtectedRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
+import { useTypedSelector } from "../store";
 
 const AppRoutes: React.FC = () => {
+  const { user } = useTypedSelector((state) => state.user);
   return (
     <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/about' element={<About />} />
-      <Route path='/achievements' element={<Achievements />} />
-      <Route path='/opensource' element={<OpenSource />} />
-      <Route path='/product' element={<Product />} />
-      <Route path='/team' element={<Team />} />
-      <Route path='/dashboard' element={<ProtectedRoute user={user} />} />
+      <Route
+        path="*"
+        element={
+          <CommonLayout>
+            <PublicRoute />
+          </CommonLayout>
+        }
+      />
+      <Route
+        path="/dashboard/*"
+        element={
+          <Sidebar>
+            <ProtectedRoute user={user} />
+          </Sidebar>
+        }
+      />
     </Routes>
   );
 };

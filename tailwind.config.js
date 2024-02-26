@@ -14,15 +14,6 @@ export default {
         lg: '4.375rem'
       }
     },
-    fontSize: {
-      xs: ['24px', { lineHeight: '32px'}],
-      sm: ['30px', { lineHeight: '38px'}],
-      md: ['36px', { lineHeight: '44px'}],
-      lg: ['48px', { lineHeight: '60px'}],
-      xl: ['60px', { lineHeight: '72px'}],
-      '2xl': ['72px', { lineHeight: '90px'}],
-    },
-  
     fontFamily: {
       inter: 'Inter, sans-serif'
     },

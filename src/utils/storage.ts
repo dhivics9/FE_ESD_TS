@@ -1,18 +1,27 @@
-// get local item user as a function
-const getUser = () => {
-  const user = localStorage.getItem('user')
-  return user ? JSON.parse(user) : null
+const PREFIX = 'ESDLAB';
+
+const SIDEBAR = `${PREFIX}_SIDEBAR`;
+const USER = `${PREFIX}_USER`;
+
+export function clearLocalStorage(): void {
+  localStorage.removeItem(SIDEBAR);
+  localStorage.removeItem(USER);
 }
 
-// save user for remember me function
-const saveUser = (user: any) => {
-  localStorage.setItem('user', JSON.stringify(user))
+export const getUser = () => {
+  const savedUser = localStorage.getItem(USER);
+  if (savedUser == null) {
+    return null
+  }
+
+  try {
+    return JSON.parse(atob(savedUser));
+  } catch {
+    return null
+  }
+};
+
+export function saveUser(user: User): void {
+  const serializeUser = JSON.stringify(user);
+  localStorage.setItem(USER, btoa(serializeUser));
 }
-
-// remove user from local storage
-const removeUser = () => {
-  localStorage.removeItem('user')
-}
-
-
-export { getUser, saveUser, removeUser }

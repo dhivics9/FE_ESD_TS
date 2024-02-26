@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://be-esd-website.onrender.com/api';

@@ -8,7 +8,9 @@ const CTALayout = () => {
       <div className='bg-[#ffffff] container max-w-[1280px] flex flex-col items-center gap-[40px] p-[32px_16px]'>
         <div className='flex flex-col gap-2 md:gap-5'>
           <Heading
-            className={'text-[24px] md:text-md tracking-[-0.72px] text-center '}
+            className={
+              'text-[24px] md:text-4xl tracking-[-0.72px] text-center '
+            }
           >
             Start Your Journey Here
           </Heading>

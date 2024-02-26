@@ -1,5 +1,5 @@
 interface User {
-  id: number,
+  id: string,
   email: string,
   name: string,
   token: string,
@@ -7,3 +7,4 @@ interface User {
   createdAt?: Date,
   updatedAt?: Date,
 }
+
