@@ -3,10 +3,10 @@ interface CardProps {
   className?: string;
 }
 
-const Card = ({ children, className }: CardProps) => {
+const Card = ({ children, className = "p-6" }: CardProps) => {
   return (
     <div
-      className={`w-full overflow-hidden rounded-lg border border-[--stroke-color] bg-[#ffffff] p-6 shadow-sm ${className}`}
+      className={`w-full overflow-hidden rounded-lg border border-[--stroke-color] bg-[#ffffff] shadow-sm ${className}`}
     >
       {children}
     </div>

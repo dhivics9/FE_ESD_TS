@@ -7,6 +7,7 @@ interface Props {
   type?: "button" | "submit" | "reset";
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   variant?: "primary" | "secondary" | "danger";
+  href?: string;
   disabled?: boolean;
 }
 

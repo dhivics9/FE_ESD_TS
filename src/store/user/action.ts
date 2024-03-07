@@ -18,7 +18,6 @@ export function login(navigate: NavigateFunction, form: FormLogin): AppThunk {
     dispatch(setLoading(true));
     try {
       const { data, status } = await AuthService.login(email, password);
-      console.log(status)
       if (status === 200) {
         dispatch(setUser(data.data));
         navigate('/dashboard');
@@ -29,10 +28,7 @@ export function login(navigate: NavigateFunction, form: FormLogin): AppThunk {
         throw new Error('Invalid credentials');
 
       }
-
       dispatch(setLoading(false));
-
-
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.response != null && error.response.data != null && error.response.data.message != null) {

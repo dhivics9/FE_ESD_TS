@@ -46,7 +46,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex bg-[--gray-50] p-6">
+      <div className="drawer-content flex justify-center bg-[--gray-50] p-6">
         {/* Page content here */}
         <label
           htmlFor="my-drawer-2"

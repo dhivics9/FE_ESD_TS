@@ -2,12 +2,14 @@ import { AnyAction, ThunkAction, ThunkDispatch, configureStore } from "@reduxjs/
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import ui from "./ui";
 import user from "./user";
+import member from "./member";
 
 
 export const stroe = configureStore({
   reducer: {
     ui,
-    user
+    user,
+    member
   }
 });
 

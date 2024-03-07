@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import AppRoutes from './routes/Routes';
-import { useLocation } from 'react-router-dom';
-import LoadingPage from './components/layouts/LoadingPage';
+import { useEffect, useState } from "react";
+import "./App.css";
+import AppRoutes from "./routes/Routes";
+import { useLocation } from "react-router-dom";
+import LoadingPage from "./components/layouts/LoadingPage";
 
 function App() {
-  const [loading, setloading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -14,11 +14,15 @@ function App() {
 
   useEffect(() => {
     setTimeout(() => {
-      setloading(false);
-    });
+      setLoading(false);
+    }, 1000);
   }, []);
 
-  return loading ? <LoadingPage /> : <AppRoutes />;
+  return (
+    <div className={`fade-container ${loading ? "loading" : "loaded"}`}>
+      {loading ? <LoadingPage /> : <AppRoutes />}
+    </div>
+  );
 }
 
 export default App;
