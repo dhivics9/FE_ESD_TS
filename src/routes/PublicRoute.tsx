@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import LoadingPage from "../components/layouts/LoadingPage";
+import CommonLayout from "../components/layouts/CommonLayout";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const load = (Component: any) => (props: any) => (
@@ -20,13 +21,15 @@ const Team = load(lazy(() => import("../pages/Team")));
 const PublicRoute: React.FC = () => {
   return (
     <Routes>
-      <Route index element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/achievements" element={<Achievements />} />
-      <Route path="/opensource" element={<OpenSource />} />
-      <Route path="/product" element={<Product />} />
-      <Route path="/team" element={<Team />} />
+      <Route element={<CommonLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/achievements" element={<Achievements />} />
+        <Route path="/opensource" element={<OpenSource />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/team" element={<Team />} />
+      </Route>
     </Routes>
   );
 };

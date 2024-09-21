@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
-import { getBearerHeader } from "../utils/service";
-import { BASE_URL } from "./url";
-import { FormLogin } from "../store/user/action";
+import { getBearerHeader } from "../../utils/service";
+import { BASE_URL } from "../url";
+import { FormLogin } from "../../store/user/action";
 
 function login(email: string, password: string): Promise<AxiosResponse> {
   const url = `${BASE_URL}/login`;
@@ -12,14 +12,14 @@ function login(email: string, password: string): Promise<AxiosResponse> {
   }, { headers: getBearerHeader(token) });
 }
 
-function register(token: string, data: FormLogin): Promise<AxiosResponse> {
+function register(data: FormLogin): Promise<AxiosResponse> {
   const url = `${BASE_URL}/register`;
-  return axios.post(url, data, { headers: getBearerHeader(token) });
+  return axios.post(url, data);
 }
 
-function logout(token: string): Promise<AxiosResponse> {
+function logout(): Promise<AxiosResponse> {
   const url = `${BASE_URL}/logout`;
-  return axios.post(url, { headers: getBearerHeader(token) });
+  return axios.post(url);
 }
 
 export const AuthService = {

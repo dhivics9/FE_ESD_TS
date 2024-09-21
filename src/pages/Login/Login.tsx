@@ -1,28 +1,14 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import LogoNameEsd from "../../components/ui/LogoEsd/LogoNameESD";
 import LoginForm from "../../components/forms/LoginForm";
-import { useTypedDispatch, useTypedSelector } from "../../store";
-import { login } from "../../store/user";
-import { FormLogin } from "../../store/user/action";
-import { useEffect } from "react";
-import { getUser } from "../../utils/storage";
+import { useTypedSelector } from "../../store";
 
 const Login = () => {
-  const dispatch = useTypedDispatch();
-  const navigate = useNavigate();
+  const { user } = useTypedSelector((state) => state.user);
 
-  // const { dark } = useTypedSelector((s) => s.ui);
-
-  const handleSubmit = (form: FormLogin) => {
-    dispatch(login(navigate, form));
-  };
-
-  useEffect(() => {
-    if (getUser()) {
-      navigate("/dashboard");
-    }
-  }, [navigate]);
-
+  if (user?.token) {
+    return <Navigate to="/dashboard" />;
+  }
   return (
     <div className="absolute top-0 grid h-screen w-full place-items-center bg-[--gray-50]">
       <div className="card w-full max-w-[500px] rounded-xl bg-base-100 shadow-xl">
@@ -31,7 +17,7 @@ const Login = () => {
             <LogoNameEsd />
           </div>
 
-          <LoginForm onSubmit={handleSubmit} />
+          <LoginForm />
 
           <div className="text-center text-xs">
             <Link to="/" className="text-primary">

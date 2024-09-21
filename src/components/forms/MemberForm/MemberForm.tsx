@@ -1,79 +1,80 @@
-import React from "react";
+import Input from "../../elements/Input/Input";
 import { Button } from "../../elements/Button/Button";
-import { Link } from "react-router-dom";
-import Card from "../../elements/Card/Card";
-import { MaterialSymbolsChevronLeft } from "../../elements/Icon/Icon";
+import { UseFormRegister, FieldErrors } from "react-hook-form";
 
 interface MemberFormProps {
-  member: Member;
-  isOpen?: boolean;
-  setAddMemberIsOpen: (prev: boolean) => void;
+  register: UseFormRegister<Member>;
+  errors: FieldErrors<Member>;
+  isPending?: boolean;
+  handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  isSubmitting?: boolean;
 }
 
-const MemberForm = ({
-  member,
-  isOpen,
-  setAddMemberIsOpen,
-}: MemberFormProps) => {
+const MemberForm: React.FC<MemberFormProps> = ({
+  register,
+  errors,
+  isPending,
+  handleFileChange,
+  isSubmitting,
+}) => {
   return (
-    <Card className="h-fit max-w-[1075px]">
-      <div className="flex items-center space-x-2 border-b border-[--stroke-color] px-6 py-4">
-        <MaterialSymbolsChevronLeft
-          className="size-9 cursor-pointer"
-          onClick={() => setAddMemberIsOpen(false)}
-        />
-        <h1 className="text-lg font-semibold">
-          {member !== null ? "Edit" : "Add"} Member
-        </h1>
-      </div>
-      <form action="#" className="p-6">
-        <div className="p-6.5 space-y-4">
-          <div className="w-full xl:w-1/2">
-            <label className=" mb-2.5 block">Nama</label>
-            <input
-              required
-              type="text"
-              placeholder="Masukkan Nama..."
-              className=" w-full rounded border-[1.5px] border-[--stroke-color] bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary disabled:cursor-default dark:focus:border-primary"
-            />
-          </div>
+    <>
+      <Input
+        {...register("name")}
+        disabled={isPending}
+        label="Nama pengguna"
+        placeholder="Masukkan Nama Pengguna"
+        error={errors.name?.message}
+      />
+      <Input
+        {...register("role")}
+        disabled={isPending}
+        label="Role"
+        placeholder="Masukkan Nama Pengguna"
+        error={errors.role?.message}
+      />
 
-          <div className="mb-4.5">
-            <label className=" mb-2.5 block">
-              Kelas <span className="text-meta-1">*</span>
-            </label>
-            <input
-              required
-              type="email"
-              placeholder="Masukkan kelas..."
-              className=" w-full rounded border-[1.5px] border-[--stroke-color] bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary disabled:cursor-default dark:focus:border-primary"
-            />
-          </div>
-
-          <div className="mb-4.5">
-            <label className=" mb-2.5 block">Role</label>
-            <input
-              type="text"
-              placeholder="Select subject"
-              className=" w-full rounded border-[1.5px] border-[--stroke-color] bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary disabled:cursor-default dark:focus:border-primary"
-            />
-          </div>
-
-          <div className="mb-6">
-            <label className=" mb-2.5 block">Message</label>
-            <textarea
-              rows={6}
-              placeholder="Type your message"
-              className=" w-full rounded border-[1.5px] border-[--stroke-color] bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary disabled:cursor-default dark:focus:border-primary"
-            ></textarea>
-          </div>
-
-          <Button className="w-full  text-sm ">
-            {member !== null ? "Edit" : "Add"} Member
-          </Button>
+      <label className="form-control">
+        <div className="label">
+          <span className="label-text text-base font-medium capitalize">
+            Status
+          </span>
         </div>
-      </form>
-    </Card>
+        <select
+          disabled={isPending}
+          {...register("status")}
+          className="input input-bordered"
+        >
+          <option value="" disabled>
+            Pilih Peran
+          </option>
+          <option value="member">Member</option>
+          <option value="alumni">Alumni</option>
+        </select>
+        {errors.status && (
+          <p className="text-red-500">{errors.status.message}</p>
+        )}
+      </label>
+
+      <Input
+        type="file"
+        disabled={isPending}
+        label="Foto"
+        placeholder="Masukkan Nama Pengguna"
+        error={errors.image?.message}
+        onChange={handleFileChange} // Set file change handler
+      />
+
+      <div className="mt-5">
+        <Button
+          className="flex w-full items-center justify-center gap-2"
+          type="submit"
+          disabled={isPending || isSubmitting}
+        >
+          Submit {isPending && <div className="loader"></div>}
+        </Button>
+      </div>
+    </>
   );
 };
 

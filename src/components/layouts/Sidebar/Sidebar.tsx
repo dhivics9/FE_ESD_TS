@@ -1,14 +1,11 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, Outlet } from "react-router-dom";
 import {
   DashboardIcon,
   IonTrophyOutline,
   MaterialSymbolsEventListOutline,
   TdesignMember,
 } from "../../elements/Icon/Icon";
-
-interface SidebarProps {
-  children: React.ReactNode;
-}
+import LogoNameEsd from "../../ui/LogoEsd/LogoNameESD";
 
 type Router = {
   path: string;
@@ -40,21 +37,21 @@ const menuItemLinks: Router[] = [
   },
 ];
 
-const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+const Sidebar = () => {
   const { pathname } = useLocation();
 
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex justify-center bg-[--gray-50] p-6">
+      <div className="drawer-content bg-[--gray-50] p-6">
         {/* Page content here */}
         <label
           htmlFor="my-drawer-2"
-          className="btn-primary drawer-button btn absolute right-2 top-2 lg:hidden"
+          className="btn btn-primary drawer-button absolute right-2 top-2 lg:hidden"
         >
           Open drawer
         </label>
-        {children}
+        <Outlet /> {/* This will render the matched child route component */}
       </div>
       <div className="drawer-side border-r border-[--stroke-color] ">
         <label
@@ -62,13 +59,14 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu min-h-full w-80 space-y-2 bg-[#ffffff] p-6 text-base ">
+        <h1 className="p-6 text-center text-2xl font-bold"></h1>
+        <LogoNameEsd />
+        <ul className="l menu w-80 space-y-2 bg-[#ffffff] p-6 text-base ">
           {menuItemLinks.map((item, index) => (
             <Link to={item.path} key={index}>
               <li
-                key={index}
-                className={`cursor-pointer rounded-xl p-3 font-medium hover:bg-[--gray-50] ${
-                  item.path === pathname && "bg-[--gray-50]"
+                className={`cursor-pointer rounded-xl font-medium  ${
+                  item.path === pathname && "bg-primaryNormal text-white"
                 } `}
               >
                 <div className="flex">

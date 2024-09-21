@@ -1,6 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import CommonLayout from "../components/layouts/CommonLayout";
-import Sidebar from "../components/layouts/Sidebar";
 import ProtectedRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import { useTypedSelector } from "../store";
@@ -9,22 +7,8 @@ const AppRoutes: React.FC = () => {
   const { user } = useTypedSelector((state) => state.user);
   return (
     <Routes>
-      <Route
-        path="*"
-        element={
-          <CommonLayout>
-            <PublicRoute />
-          </CommonLayout>
-        }
-      />
-      <Route
-        path="/dashboard/*"
-        element={
-          <Sidebar>
-            <ProtectedRoute user={user} />
-          </Sidebar>
-        }
-      />
+      <Route path="*" element={<PublicRoute />} />
+      <Route path="/dashboard/*" element={<ProtectedRoute user={user} />} />
     </Routes>
   );
 };
