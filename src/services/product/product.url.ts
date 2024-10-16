@@ -1,16 +1,15 @@
 import { AxiosResponse } from "axios";
 import axiosInstance from "../axiosInstance";  // Assuming you're using axiosInstance
 
-function getProductByStatus(status: string): Promise<AxiosResponse> {
-  const url = `/product?on_development=${status.toUpperCase()}`;
-  return axiosInstance.get(url);
+function getProducts(params?: { on_development: boolean }): Promise<AxiosResponse> {
+  return axiosInstance.get('/product', { params });
 }
 
-function addProduct(data: Product): Promise<AxiosResponse> {
+function addProduct(data: FormData): Promise<AxiosResponse> {
   return axiosInstance.post('/product/add', data);
 }
 
-function updateProductData(id: string, data: Product): Promise<AxiosResponse> {
+function updateProductData(id: string, data: FormData): Promise<AxiosResponse> {
   return axiosInstance.put(`/product/${id}`, data);
 }
 
@@ -19,7 +18,7 @@ function deleteProduct(id: string): Promise<AxiosResponse> {
 }
 
 const ProductService = {
-  getProductByStatus,
+  getProducts,
   addProduct,
   updateProductData,
   deleteProduct

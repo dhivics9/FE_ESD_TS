@@ -12,10 +12,10 @@ export const useGetAllAchievements = (params?: Achievement[]) => {
 
 // Mutation for ADD achievement
 export const useAddAchievement = (
-  options?: UseMutationOptions<AxiosResponse, unknown, Achievement>,
+  options?: UseMutationOptions<AxiosResponse, unknown, FormData>,
 ) => {
-  return useMutation<AxiosResponse, unknown, Achievement>({
-    mutationFn: async (data: Achievement) => {
+  return useMutation<AxiosResponse, unknown, FormData>({
+    mutationFn: async (data: FormData) => {
       const response = await AchievementService.addAchievement(data);
       return response.data;
     },
@@ -25,10 +25,10 @@ export const useAddAchievement = (
 
 // Mutation for UPDATE achievement data
 export const useUpdateAchievementData = (
-  options?: UseMutationOptions<AxiosResponse, unknown, { id: string; data: Achievement }>,
+  options?: UseMutationOptions<AxiosResponse, unknown, { id: string; data: FormData }>,
 ) => {
-  return useMutation<AxiosResponse, unknown, { id: string; data: Achievement }>({
-    mutationFn: async ({ id, data }: { id: string; data: Achievement }) => {
+  return useMutation<AxiosResponse, unknown, { id: string; data: FormData }>({
+    mutationFn: async ({ id, data }: { id: string; data: FormData }) => {
       const response = await AchievementService.updateAchievementData(id, data);
       return response.data;
     },

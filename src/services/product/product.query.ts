@@ -3,21 +3,21 @@ import { AxiosResponse } from 'axios';
 import ProductService from './product.url';
 
 // Query for GET products by status
-export const useGetProductByStatus = (status: string) => {
+export const useGetProducts = (params?: { on_development: boolean }) => {
   return useQuery({
-    queryKey: ['products', status],
-    queryFn: async () => ProductService.getProductByStatus(status),
+    queryKey: ['products', params],
+    queryFn: async () => ProductService.getProducts(params),
   });
 };
 
 // Mutation for ADD product
 export const useAddProduct = (
-  options?: UseMutationOptions<AxiosResponse, unknown, Product>,
+  options?: UseMutationOptions<AxiosResponse, unknown, FormData>,
 ) => {
-  return useMutation<AxiosResponse, unknown, Product>({
-    mutationFn: async (data: Product) => {
+  return useMutation<AxiosResponse, unknown, FormData>({
+    mutationFn: async (data: FormData) => {
       const response = await ProductService.addProduct(data);
-      return response.data;
+      return response.data.data;
     },
     ...options,
   });
@@ -25,10 +25,10 @@ export const useAddProduct = (
 
 // Mutation for UPDATE product data
 export const useUpdateProductData = (
-  options?: UseMutationOptions<AxiosResponse, unknown, { id: string; data: Product }>,
+  options?: UseMutationOptions<AxiosResponse, unknown, { id: string; data: FormData }>,
 ) => {
-  return useMutation<AxiosResponse, unknown, { id: string; data: Product }>({
-    mutationFn: async ({ id, data }: { id: string; data: Product }) => {
+  return useMutation<AxiosResponse, unknown, { id: string; data: FormData }>({
+    mutationFn: async ({ id, data }: { id: string; data: FormData }) => {
       const response = await ProductService.updateProductData(id, data);
       return response.data;
     },

@@ -12,21 +12,21 @@ interface Member {
 }
 
 interface Achievement {
-  id: number;
+  id: string;
   member_id: string;
   achievement: string;
-  image?: File;
+  image?: string;
   createdAt?: Date | string;
   updatedAt?: Date | string;
   deletedAt?: Date | string;
 }
 
-
 interface Product {
-  id: number;
+  id: string;
   product: string;
   description: string;
   category: string;
+  on_development: boolean;
   image?: File;
   createdAt?: Date | string;
   updatedAt?: Date | string;

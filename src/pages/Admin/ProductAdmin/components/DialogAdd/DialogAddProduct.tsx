@@ -6,20 +6,18 @@ import {
   Modal,
   ModalBox,
 } from "../../../../../components/elements/Modal/Modal";
-import { useAddAchievement } from "../../../../../services/achievement/achievement.query";
+import ProductForm from "../../../../../components/forms/ProductForm";
+import { useAddProduct } from "../../../../../services/product/product.query";
 import toast from "react-hot-toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { achievementSchema } from "../../../../../components/forms/AchievementForm/schema";
-import AchievementForm from "../../../../../components/forms/AchievementForm/AchievementForm";
+import { productSchema } from "../../../../../components/forms/ProductForm/schema";
 
-interface DialogAddAchievementProps {
+interface DialogAddProductProps {
   onClose: () => void;
 }
 
-const DialogAddAchievement: React.FC<DialogAddAchievementProps> = ({
-  onClose,
-}) => {
+const DialogAddProduct: React.FC<DialogAddProductProps> = ({ onClose }) => {
   const queryClient = useQueryClient();
   const [image, setImage] = useState<File>();
 
@@ -28,44 +26,41 @@ const DialogAddAchievement: React.FC<DialogAddAchievementProps> = ({
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<Achievement>({
-    resolver: zodResolver(achievementSchema),
+  } = useForm<Product>({
+    resolver: zodResolver(productSchema),
     defaultValues: {
-      member_id: "",
-      achievement: "",
-      image: "", // Initial empty values for achievement
+      product: "",
+      description: "",
+      category: "",
+      on_development: "false",
     },
   });
 
-  const { mutate: addAchievement, isPending } = useAddAchievement({
+  const { mutate: addProduct, isPending } = useAddProduct({
     onSuccess: () => {
-      toast.success("Achievement added successfully");
-      queryClient.invalidateQueries({ queryKey: ["achievements"] });
-
-      // Reset the form upon successful submission
+      toast.success("Product added successfully");
+      queryClient.invalidateQueries({ queryKey: ["products"] });
       reset();
       onClose();
     },
     onError: (err) => {
-      toast.error("Failed to add achievement");
+      toast.error("Failed to add product");
       console.error(err);
     },
   });
 
-  const onSubmit: SubmitHandler<Achievement> = (data) => {
+  const onSubmit: SubmitHandler<Product> = (data) => {
     const formData = new FormData();
+    formData.append("product", data.product);
+    formData.append("description", data.description);
+    formData.append("category", data.category);
+    formData.append("on_development", data.on_development);
 
-    // Append each field to the FormData object
-    formData.append("member_id", data.member_id);
-    formData.append("achievement", data.achievement);
-
-    // Append the image if it exists
     if (image) {
-      formData.append("photo", image);
+      formData.append("image", image);
     }
 
-    // Call the mutation with formData
-    addAchievement(formData);
+    addProduct(formData);
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,16 +71,16 @@ const DialogAddAchievement: React.FC<DialogAddAchievementProps> = ({
   };
 
   return (
-    <Modal id="add-achievement-dialog">
+    <Modal id="add-product-dialog">
       <ModalBox>
         <div className="flex items-center justify-between ">
-          <h1 className="text-2xl font-semibold">Add Achievement</h1>
+          <h1 className="text-2xl font-semibold">Add Product</h1>
           <Button className="!rounded-full !p-2" onClick={onClose}>
             <XMarkIcon className="size-6" />
           </Button>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <AchievementForm
+          <ProductForm
             register={register}
             errors={errors}
             isPending={isPending}
@@ -98,4 +93,4 @@ const DialogAddAchievement: React.FC<DialogAddAchievementProps> = ({
   );
 };
 
-export default DialogAddAchievement;
+export default DialogAddProduct;
