@@ -32,3 +32,16 @@ interface Product {
   updatedAt?: Date | string;
   deletedAt?: Date | string;
 }
+
+interface EventTypes {
+  id: string;
+  name: string;
+  date: string;
+  detail: string;
+  organizer: string;
+  image: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  deletedAt?: Date | string;
+
+}

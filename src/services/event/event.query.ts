@@ -2,21 +2,36 @@ import { useQuery, useMutation, UseMutationOptions } from '@tanstack/react-query
 import { AxiosResponse } from 'axios';
 import EventService from './event.url';
 
+interface EventPayload {
+  data: {
+    name: string;
+    date: string;
+    detail: string;
+    organizer: string;
+  };
+  image: File;
+}
+
 // Query for GET all events
 export const useGetAllEvents = (params?: Event[]) => {
   return useQuery({
     queryKey: ['events', params],
-    queryFn: async () => EventService.getAllEvents(params),
+    // queryFn: async () => EventService.getAllEvents(params),
+
+    queryFn: async () => {
+      const response = await EventService.getAllEvents(params);
+      return response.data.data;
+    },
   });
 };
 
 // Mutation for ADD event
 export const useAddEvent = (
-  options?: UseMutationOptions<AxiosResponse, unknown, Event>,
+  options?: UseMutationOptions<AxiosResponse, unknown, EventPayload>,
 ) => {
-  return useMutation<AxiosResponse, unknown, Event>({
-    mutationFn: async (data: Event) => {
-      const response = await EventService.addEvent(data);
+  return useMutation<AxiosResponse, unknown, EventPayload>({
+    mutationFn: async (payload: EventPayload) => {
+      const response = await EventService.addEvent(payload);
       return response.data;
     },
     ...options,
