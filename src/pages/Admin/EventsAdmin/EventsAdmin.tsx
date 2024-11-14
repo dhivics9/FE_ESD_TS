@@ -89,7 +89,7 @@ const EventsAdmin: React.FC = () => {
 
       {selectedEvent ? (
         <DialogEditEvent
-          selectedMember={selectedEvent}
+          selectedEvent={selectedEvent}
           onClose={() => {
             closeModal("edit-event-dialog");
             setSelectedEvent(undefined);
