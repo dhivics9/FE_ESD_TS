@@ -17,6 +17,7 @@ const Home = load(lazy(() => import("../pages/Home")));
 const OpenSource = load(lazy(() => import("../pages/OpenSource")));
 const Product = load(lazy(() => import("../pages/Product")));
 const Team = load(lazy(() => import("../pages/Team")));
+const Events = load(lazy(() => import("../pages/Events")));
 
 const PublicRoute: React.FC = () => {
   return (
@@ -26,6 +27,7 @@ const PublicRoute: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/achievements" element={<Achievements />} />
+        <Route path="/events" element={<Events />} />
         <Route path="/opensource" element={<OpenSource />} />
         <Route path="/product" element={<Product />} />
         <Route path="/team" element={<Team />} />
