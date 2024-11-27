@@ -1,16 +1,28 @@
-import { Button } from "../../components/elements/Button/Button";
-import ButtonGroup from "../../components/ui/ButtonGroup/ButtonGroup";
-import HeadingBanner from "../../components/ui/HeadingBanner/HeadingBanner";
-import SectionHeading from "../../components/ui/SectionHeading/SectionHeading";
-import { ValuesData } from "../../components/ui/ValueSection/ValueData";
-import ValueList from "../../components/ui/ValueSection/ValueList";
-import HeaderImage from "/header-image.webp";
-import EventView from "./../../components/ui/EventsSection/EventList";
-import { techEvents } from "../../components/ui/EventsSection/EventData";
-import AlumniList from "../../components/ui/AlumniSection/AlumniList";
+import { Button } from '../../components/elements/Button/Button';
+import ButtonGroup from '../../components/ui/ButtonGroup/ButtonGroup';
+import HeadingBanner from '../../components/ui/HeadingBanner/HeadingBanner';
+import SectionHeading from '../../components/ui/SectionHeading/SectionHeading';
+import { ValuesData } from '../../components/ui/ValueSection/ValueData';
+import ValueList from '../../components/ui/ValueSection/ValueList';
+import HeaderImage from '/header-image.webp';
+import EventView from './../../components/ui/EventsSection/EventList';
+import { techEvents } from '../../components/ui/EventsSection/EventData';
+import { ProductData } from '../../components/ui/ProductSection/ProductData';
+import ProductList from '../../components/ui/ProductSection/ProductList';
+import AlumniList from '../../components/ui/AlumniSection/AlumniList';
+import { useGetAllEvents } from '../../services/event/event.query';
+
 
 // Home Component
 const Home = () => {
+
+
+  const {data: eventData, isFetching, isError} = useGetAllEvents({
+    page: 1,
+    size: 3
+  });
+  const eventsData = eventData?.data;
+
   return (
     <>
       {/* Header Section */}
@@ -71,7 +83,21 @@ const Home = () => {
               </SectionHeading.HeadingBottom>
             </div>
           </SectionHeading>
-          <EventView events={techEvents} />
+      {isFetching ? (
+        <div className="flex justify-center items-center min-h-[200px]">
+          <p className="text-lg">Loading events...</p>
+        </div>
+      ) : isError ? (
+        <div className="flex justify-center items-center min-h-[200px]">
+          <p className="text-lg text-red-500">Error loading events. Please try again later.</p>
+        </div>
+      ) : !eventData || eventData.length === 0 ? (
+        <div className="flex justify-center items-center min-h-[200px]">
+          <p className="text-lg">No events available at the moment.</p>
+        </div>
+      ) : (
+        <EventView events={eventsData} />
+      )}
         </div>
       </div>
 
