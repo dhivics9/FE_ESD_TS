@@ -6,7 +6,10 @@ import ProductService from './product.url';
 export const useGetProducts = (params?: { on_development: boolean }) => {
   return useQuery({
     queryKey: ['products', params],
-    queryFn: async () => ProductService.getProducts(params),
+    queryFn: async () => {
+      const response = await ProductService.getProducts(params);
+      return response.data.data;
+    },
   });
 };
 

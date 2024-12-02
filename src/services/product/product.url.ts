@@ -6,15 +6,15 @@ function getProducts(params?: { on_development: boolean }): Promise<AxiosRespons
 }
 
 function addProduct(data: FormData): Promise<AxiosResponse> {
-  return axiosInstance.post('/product/add', data);
+  return axiosInstance.post('/products/add', data);
 }
 
 function updateProductData(id: string, data: FormData): Promise<AxiosResponse> {
-  return axiosInstance.put(`/product/${id}`, data);
+  return axiosInstance.put(`/products/${id}`, data);
 }
 
 function deleteProduct(id: string): Promise<AxiosResponse> {
-  return axiosInstance.delete(`/product/${id}`);
+  return axiosInstance.delete(`/products/${id}`);
 }
 
 const ProductService = {
