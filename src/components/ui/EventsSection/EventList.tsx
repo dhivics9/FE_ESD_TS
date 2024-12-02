@@ -33,12 +33,14 @@ const EventView = ({ events }: EventViewProps) => {
     [currentIndex],
   );
   return (
-    <div>
-      <EventItem
-        key={events[0].title}
-        event={events[currentIndex]}
-        onClick={handleClick}
-      />
+    <div className="events-container">
+      {events.map((event, index) => (
+        <EventItem
+          key={`${event.title}-${index}`}
+          event={event}
+          onClick={handleClick}
+        />
+      ))}
     </div>
   );
 };

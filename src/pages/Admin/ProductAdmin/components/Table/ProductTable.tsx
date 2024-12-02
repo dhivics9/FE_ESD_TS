@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { Button } from "../../../../../components/elements/Button/Button";
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { openModal } from "../../../../../utils/modal";
@@ -22,9 +21,6 @@ const ProductTable: React.FC<ProductTableProps> = ({
   setDeletedItem,
   isLoading,
 }) => {
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -50,11 +46,11 @@ const ProductTable: React.FC<ProductTableProps> = ({
                     <div className="flex items-center gap-3">
                       <div className="avatar">
                         <div className="mask mask-squircle h-12 w-12">
-                          <img src={product.image} alt={product.name} />
+                          <img src={product.image} alt={product.product} />
                         </div>
                       </div>
                       <div>
-                        <div className="font-bold">{product.name}</div>
+                        <div className="font-bold">{product.product}</div>
                       </div>
                     </div>
                   </td>

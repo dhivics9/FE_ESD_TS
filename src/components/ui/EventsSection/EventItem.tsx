@@ -13,10 +13,10 @@ enum ActionType {
 interface EventItemProps {
   event: {
     date: string;
-    title: string;
-    description: string;
+    name: string;
+    detail: string;
     link: string;
-    imagePath: string;
+    image: string;
   };
   onClick?: (action: ActionType) => void;
 }
@@ -33,9 +33,9 @@ const EventItem = ({ event, onClick }: EventItemProps) => {
     }
   };
   return (
-    <div className='flex max-w-[1096px] items-start gap-[64px] max-lg:flex-col max-lg:gap-[32px] max-lg:items-center'>
+    <div className='mt-10 flex max-w-[1096px] items-start gap-[64px] max-lg:flex-col max-lg:gap-[32px] max-lg:items-center'>
       <div className='border border-[#000000]'>
-        <img src={event.imagePath} className='w-[336px] h-[304px]' alt='' />
+        <img src={event.image} className='w-[336px] h-[304px]' alt='' />
       </div>
 
       <div className='flex flex-col justify-between min-h-[304px]'>
@@ -52,7 +52,7 @@ const EventItem = ({ event, onClick }: EventItemProps) => {
                 'font-inter text-[24px] md:text-[22px] text-center font-semibold leading-[32px]'
               }
             >
-              {event.title}
+              {event.name}
             </Heading>
           </div>
 
@@ -61,7 +61,7 @@ const EventItem = ({ event, onClick }: EventItemProps) => {
               'text-infoDark font-inter text-[18px] font-[500px] leading-[28px]'
             }
           >
-            {event.description}
+            {event.detail}
           </Paragraph>
         </div>
         <div
@@ -80,14 +80,14 @@ const EventItem = ({ event, onClick }: EventItemProps) => {
               </Link>
             </button>
           </div>
-          <div id='Button-quote' className='flex gap-[16px]'>
-            <ButtonGroup>
-              <Button variant='secondary' onClick={handleNextClick}>
-                Previous
-              </Button>
-              <Button onClick={handlePrevious}>Next</Button>
-            </ButtonGroup>
-          </div>
+          {/* <div id='Button-quote' className='flex gap-[16px]'> */}
+          {/*   <ButtonGroup> */}
+          {/*     <Button variant='secondary' onClick={handleNextClick}> */}
+          {/*       Previous */}
+          {/*     </Button> */}
+          {/*     <Button onClick={handlePrevious}>Next</Button> */}
+          {/*   </ButtonGroup> */}
+          {/* </div> */}
         </div>
       </div>
     </div>
