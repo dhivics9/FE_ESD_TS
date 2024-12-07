@@ -3,7 +3,7 @@ import { Button } from '../../elements/Button/Button';
 import Heading from '../../elements/Heading/Heading';
 import Paragraph from '../../elements/Paragraph/Paragraph';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
-import { formatDate } from '../../../utils/string';
+import { convertDateString, formatDate } from '../../../utils/string';
 
 enum ActionType {
   Next = 'next',
@@ -45,7 +45,7 @@ const EventItem = ({ event, onClick }: EventItemProps) => {
         >
           <div className='flex max-w-[711px] flex-col items-start gap-[8px] max-sm:items-center'>
             <h3 className='text-[#6941C6] text-center font-inter text-[16px] md:text-[14px] font-semibold leading-[24px] tracking-normal'>
-              {formatDate(event.date)}
+              {convertDateString(event.date)}
             </h3>
             <Heading
               className={
