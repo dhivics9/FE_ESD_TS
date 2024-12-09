@@ -55,14 +55,10 @@ const DialogAddEvent: React.FC<DialogAddEventProps> = ({ onClose }) => {
 const onSubmit: SubmitHandler<EventTypes> = (data) => {
   const formData = new FormData();
   
-  const formattedDate = new Date(data.date).toISOString();
-  
-  formData.append('data', JSON.stringify({
-    name: data.name,
-    date: formattedDate,  // This will be in RFC3339 format
-    detail: data.detail,
-    organizer: data.organizer
-  }));
+  formData.append('name', data.name);
+  formData.append('date', data.date);
+  formData.append('detail', data.detail);
+  formData.append('organizer', data.organizer);
   
   if (image) {
     formData.append('image', image);
