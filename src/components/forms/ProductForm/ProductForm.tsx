@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import Input from "../../elements/Input/Input";
 import { Button } from "../../elements/Button/Button";
@@ -17,7 +17,11 @@ const ProductForm: React.FC<ProductFormProps> = ({
   isPending,
   handleFileChange,
   isSubmitting,
+  memberData,
 }) => {
+  useEffect(() => {
+    console.log("memberData", memberData);
+  }, [memberData]);
   return (
     <>
       <Input
@@ -41,6 +45,29 @@ const ProductForm: React.FC<ProductFormProps> = ({
         placeholder="Enter Category"
         error={errors.category?.message}
       />
+
+      <label className="form-control">
+        <div className="label">
+          <span className="label-text text-base font-medium capitalize">
+            Member
+          </span>
+        </div>
+        <select
+          disabled={isPending}
+          {...register("member")}
+          className="input input-bordered"
+        >
+          <option value="-">-</option>
+          {memberData?.map((member) => (
+            <option key={member.id} value={member.id}>
+              {member.name}
+            </option>
+          ))}
+        </select>
+        {errors.member && (
+          <p className="text-red-500">{errors.member.message}</p>
+        )}
+      </label>
 
       <label className="form-control">
         <div className="label">

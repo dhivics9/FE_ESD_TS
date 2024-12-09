@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { set, SubmitHandler, useForm } from "react-hook-form";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Button } from "../../../../../components/elements/Button/Button";
 import {
@@ -9,9 +9,10 @@ import {
 import ProductForm from "../../../../../components/forms/ProductForm";
 import toast from "react-hot-toast";
 import { useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { productSchema } from "../../../../../components/forms/ProductForm/schema";
 import { useUpdateProductData } from "../../../../Login/product/product.query";
+import { useGetAllMembers } from "../../../../../services/member/member.query";
 
 interface DialogEditProductProps {
   selectedProduct: Product;
@@ -30,10 +31,19 @@ const DialogEditProduct: React.FC<DialogEditProductProps> = ({
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
+    setValue,
   } = useForm<Product>({
     resolver: zodResolver(productSchema),
-    defaultValues: selectedProduct,
+    defaultValues: {
+      ...selectedProduct,
+      member: selectedProduct.members[0].id,
+      on_development: selectedProduct.on_development.toString(),
+    },
   });
+
+  useEffect(() => {
+    console.log("selectedProduct", selectedProduct);
+  }, [selectedProduct]);
 
   const { mutate: updateProduct, isPending } = useUpdateProductData({
     onSuccess: () => {
@@ -47,17 +57,17 @@ const DialogEditProduct: React.FC<DialogEditProductProps> = ({
     },
   });
 
+  const { data: memberData } = useGetAllMembers();
+
   const onSubmit: SubmitHandler<Product> = (data) => {
     const formData = new FormData();
     formData.append("product", data.product);
     formData.append("description", data.description);
     formData.append("category", data.category);
-    formData.append("on_development", data.on_development.toString());
-
-    if (image) {
-      formData.append("image", image);
-    }
-
+    formData.append("on_development", data.on_development);
+    formData.append("image", image || selectedProduct.image);
+    formData.append("member_ids", data.member);
+    formData.append("published_at", selectedProduct.published_at);
     updateProduct({ id: selectedProduct.id, data: formData });
   };
 
@@ -65,6 +75,7 @@ const DialogEditProduct: React.FC<DialogEditProductProps> = ({
     const file = event.target.files?.[0];
     if (file) {
       setImage(file);
+      setValue("image", file);
     }
   };
 
@@ -84,6 +95,7 @@ const DialogEditProduct: React.FC<DialogEditProductProps> = ({
             isPending={isPending}
             handleFileChange={handleFileChange}
             isSubmitting={isSubmitting}
+            memberData={memberData}
           />
         </form>
       </ModalBox>

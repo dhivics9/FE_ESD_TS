@@ -33,14 +33,13 @@ interface EventTypes {
   createdAt?: Date | string;
   updatedAt?: Date | string;
   deletedAt?: Date | string;
-
 }
 
 interface Pagination {
   page: number;
-  size: number,
-  totalData: number,
-  totalPage: number
+  size: number;
+  totalData: number;
+  totalPage: number;
 }
 
 interface BaseResponse {

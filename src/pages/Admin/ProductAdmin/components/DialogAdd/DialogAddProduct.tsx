@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { productSchema } from "../../../../../components/forms/ProductForm/schema";
+import { useGetAllMembers } from "../../../../../services/member/member.query";
 
 interface DialogAddProductProps {
   onClose: () => void;
@@ -26,11 +27,13 @@ const DialogAddProduct: React.FC<DialogAddProductProps> = ({ onClose }) => {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
+    setValue,
   } = useForm<Product>({
     resolver: zodResolver(productSchema),
     defaultValues: {
       product: "",
       description: "",
+      member: "-",
       category: "",
       on_development: "false",
     },
@@ -49,17 +52,21 @@ const DialogAddProduct: React.FC<DialogAddProductProps> = ({ onClose }) => {
     },
   });
 
+  const { data: memberData } = useGetAllMembers();
+
   const onSubmit: SubmitHandler<Product> = (data) => {
+    if (!image) {
+      toast.error("Please select an image");
+      return;
+    }
     const formData = new FormData();
     formData.append("product", data.product);
     formData.append("description", data.description);
     formData.append("category", data.category);
     formData.append("on_development", data.on_development);
-
-    if (image) {
-      formData.append("image", image);
-    }
-
+    formData.append("image", image);
+    formData.append("member_ids", data.member);
+    formData.append("published_at", new Date().toISOString().split("T")[0]);
     addProduct(formData);
   };
 
@@ -67,6 +74,7 @@ const DialogAddProduct: React.FC<DialogAddProductProps> = ({ onClose }) => {
     const file = event.target.files?.[0];
     if (file) {
       setImage(file);
+      setValue("image", file);
     }
   };
 
@@ -86,6 +94,7 @@ const DialogAddProduct: React.FC<DialogAddProductProps> = ({ onClose }) => {
             isPending={isPending}
             handleFileChange={handleFileChange}
             isSubmitting={isSubmitting}
+            memberData={memberData}
           />
         </form>
       </ModalBox>

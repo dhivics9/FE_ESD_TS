@@ -23,7 +23,7 @@ const ProductAdmin: React.FC = () => {
 
   const { id: deletedId, name: deletedName } = deletedItem;
 
-  const { data: productData, isFetching, isError } = useGetProducts({ on_development: true })
+  const { data: productData, isFetching, isError } = useGetProducts();
   const { mutate: deleteProduct, isPending: pendingDelete } = useDeleteProduct({
     onSuccess: () => {
       setDeletedItem({ id: "", name: "" });
@@ -37,14 +37,13 @@ const ProductAdmin: React.FC = () => {
     },
   });
 
-  
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 5;
-  
+
   const totalPages = Array.isArray(productData)
-  ? Math.ceil(productData.length / pageSize)
-  : 1;
-  
+    ? Math.ceil(productData.length / pageSize)
+    : 1;
+
   const tableData = useMemo(() => {
     if (Array.isArray(productData)) {
       return productData.slice(
@@ -54,11 +53,7 @@ const ProductAdmin: React.FC = () => {
     }
     return [];
   }, [productData, currentPage]);
-  
-  useEffect(() => {
-    console.log("tableData", tableData);
-  }, [tableData]);
-  
+
   if (isError) return <div>Error loading data.</div>;
 
   return (

@@ -1,6 +1,7 @@
 import { Button } from "../../../../../components/elements/Button/Button";
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { openModal } from "../../../../../utils/modal";
+import { useEffect } from "react";
 
 interface ProductTableProps {
   products: Product[];
@@ -34,6 +35,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
               <th>Product</th>
               <th>Description</th>
               <th>Category</th>
+              <th>Member</th>
               <th>Development Status</th>
               <th>Actions</th>
             </tr>
@@ -56,6 +58,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
                   </td>
                   <td>{product.description}</td>
                   <td>{product.category}</td>
+                  <td>{product.members[0].name}</td>
                   <td>
                     {product.on_development ? "In Development" : "Completed"}
                   </td>
