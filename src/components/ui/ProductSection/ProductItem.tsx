@@ -1,9 +1,10 @@
-import { Button } from '../../elements/Button/Button';
-import SectionHeading from '../SectionHeading';
+import { Button } from "../../elements/Button/Button";
+import SectionHeading from "../SectionHeading";
 
 interface ProductItemProps {
   product: {
-    name: string;
+    product: string;
+    category: string;
     description: string;
     image: string;
     link: string;
@@ -20,34 +21,38 @@ const ProductItem = ({ product }: ProductItemProps) => {
   return (
     <>
       {/* Project section */}
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
+      <div className="flex max-w-[1200px] justify-center gap-12">
         <div>
-          <img src={'./mu2.webp'} alt='' />
+          <img
+            src={product.image}
+            alt="Product Image"
+            className="h-64 w-96 object-contain object-right"
+          />
         </div>
-        <div className='flex flex-col gap-[21px]'>
+        <div className="flex flex-col gap-[21px]">
           <SectionHeading>
-            <div className='grid place-items-start'>
+            <div className="grid place-items-start">
               <SectionHeading.HeadingTop>
-                {product.name}
+                {product.category}
               </SectionHeading.HeadingTop>
               <SectionHeading.HeadingBottom>
-                {product.name}
+                {product.product}
               </SectionHeading.HeadingBottom>
             </div>
           </SectionHeading>
-          <div className='flex gap-4'>
-            <Button className='disabled hover:bg-none' variant='secondary'>
+          <div className="flex gap-4">
+            <Button className="disabled hover:bg-none" variant="secondary">
               Redesign
             </Button>
-            <Button variant='secondary'>Website</Button>
+            <Button variant="secondary">Website</Button>
           </div>
-          <SectionHeading.ParagraphBottom className={'text-start'}>
+          <SectionHeading.ParagraphBottom className={"text-start"}>
             {product.description}
           </SectionHeading.ParagraphBottom>
 
-          <div className='grid grid-cols-2 gap-4'>
+          <div className="grid grid-cols-2 gap-4">
             <Button>Mockup Showcase</Button>
-            <Button variant='secondary'>Repository</Button>
+            <Button variant="secondary">Repository</Button>
           </div>
         </div>
       </div>
