@@ -118,7 +118,7 @@ const Home = () => {
                 Our Members Have Collaborated with Various Leading Tech
               </SectionHeading.HeadingTop>
               <SectionHeading.HeadingBottom>
-                What Alumni Said About ESD Laboratory
+                What Alumni Said About EISD Laboratory
               </SectionHeading.HeadingBottom>
             </div>
           </SectionHeading>

@@ -1,5 +1,5 @@
 import { Link, Navigate } from "react-router-dom";
-import LogoNameEsd from "../../components/ui/LogoEsd/LogoNameESD";
+import LogoNameEisd from "../../components/ui/LogoEisd/LogoNameEISD";
 import LoginForm from "../../components/forms/LoginForm";
 import { useTypedSelector } from "../../store";
 
@@ -14,7 +14,7 @@ const Login = () => {
       <div className="card w-full max-w-[500px] rounded-xl bg-base-100 shadow-xl">
         <div className="card-body p-6">
           <div className="py-6">
-            <LogoNameEsd />
+            <LogoNameEisd />
           </div>
 
           <LoginForm />

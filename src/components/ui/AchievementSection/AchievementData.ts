@@ -10,7 +10,7 @@ interface Achievement {
 export const achievementsData: Achievement[] = [
   {
     name: "Achievement 1",
-    description: "Join us for an exciting collaboration between the esteemed ESD Laboratory and Google Indonesia! This exclusive event brings together the expertise of ESD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
+    description: "Join us for an exciting collaboration between the esteemed EISD Laboratory and Google Indonesia! This exclusive event brings together the expertise of EISD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
     image: "./Winner.png",
     collaborators: 'Hafeezi Faruqi, Abdi Fatih, Hanan Rafif, Rafif Fadhil',
     link: "achievement_link_1",
@@ -18,7 +18,7 @@ export const achievementsData: Achievement[] = [
   },
   {
     name: "Achievement 2",
-    description: "Join us for an exciting collaboration between the esteemed ESD Laboratory and Google Indonesia! This exclusive event brings together the expertise of ESD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
+    description: "Join us for an exciting collaboration between the esteemed EISD Laboratory and Google Indonesia! This exclusive event brings together the expertise of EISD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
     image: "./Winner.png",
     collaborators: 'Hafeezi Faruqi, Abdi Fatih, Hanan Rafif, Rafif Fadhil',
     link: "achievement_link_2",
@@ -26,7 +26,7 @@ export const achievementsData: Achievement[] = [
   },
   {
     name: "Achievement 3",
-    description: "Join us for an exciting collaboration between the esteemed ESD Laboratory and Google Indonesia! This exclusive event brings together the expertise of ESD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
+    description: "Join us for an exciting collaboration between the esteemed EISD Laboratory and Google Indonesia! This exclusive event brings together the expertise of EISD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
     image: "./Winner.png",
     collaborators: 'Hafeezi Faruqi, Abdi Fatih, Hanan Rafif, Rafif Fadhil',
     link: "achievement_link_3",
@@ -34,7 +34,7 @@ export const achievementsData: Achievement[] = [
   },
   {
     name: "Achievement 4",
-    description: "Join us for an exciting collaboration between the esteemed ESD Laboratory and Google Indonesia! This exclusive event brings together the expertise of ESD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
+    description: "Join us for an exciting collaboration between the esteemed EISD Laboratory and Google Indonesia! This exclusive event brings together the expertise of EISD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
     image: "./Winner.png",
     collaborators: 'Hafeezi Faruqi, Abdi Fatih, Hanan Rafif, Rafif Fadhil',
     link: "achievement_link_4",
@@ -42,7 +42,7 @@ export const achievementsData: Achievement[] = [
   },
   {
     name: "Achievement 5",
-    description: "Join us for an exciting collaboration between the esteemed ESD Laboratory and Google Indonesia! This exclusive event brings together the expertise of ESD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
+    description: "Join us for an exciting collaboration between the esteemed EISD Laboratory and Google Indonesia! This exclusive event brings together the expertise of EISD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
     image: "./Winner.png",
     collaborators: 'Hafeezi Faruqi, Abdi Fatih, Hanan Rafif, Rafif Fadhil',
     link: "achievement_link_5",
@@ -50,7 +50,7 @@ export const achievementsData: Achievement[] = [
   },
   {
     name: "Achievement 6",
-    description: "Join us for an exciting collaboration between the esteemed ESD Laboratory and Google Indonesia! This exclusive event brings together the expertise of ESD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
+    description: "Join us for an exciting collaboration between the esteemed EISD Laboratory and Google Indonesia! This exclusive event brings together the expertise of EISD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
     collaborators: 'Hafeezi Faruqi, Abdi Fatih, Hanan Rafif, Rafif Fadhil',
     image: "./Winner.png",
     link: "achievement_link_6",
@@ -58,7 +58,7 @@ export const achievementsData: Achievement[] = [
   },
   {
     name: "Achievement 7",
-    description: "Join us for an exciting collaboration between the esteemed ESD Laboratory and Google Indonesia! This exclusive event brings together the expertise of ESD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
+    description: "Join us for an exciting collaboration between the esteemed EISD Laboratory and Google Indonesia! This exclusive event brings together the expertise of EISD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
     image: "./Winner.png",
     collaborators: 'Hafeezi Faruqi, Abdi Fatih, Hanan Rafif, Rafif Fadhil',
     link: "achievement_link_7",
@@ -66,7 +66,7 @@ export const achievementsData: Achievement[] = [
   },
   {
     name: "Achievement 8",
-    description: "Join us for an exciting collaboration between the esteemed ESD Laboratory and Google Indonesia! This exclusive event brings together the expertise of ESD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
+    description: "Join us for an exciting collaboration between the esteemed EISD Laboratory and Google Indonesia! This exclusive event brings together the expertise of EISD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
     image: "./Winner.png",
     collaborators: 'Hafeezi Faruqi, Abdi Fatih, Hanan Rafif, Rafif Fadhil',
     link: "achievement_link_8",
@@ -74,7 +74,7 @@ export const achievementsData: Achievement[] = [
   },
   {
     name: "Achievement 9",
-    description: "Join us for an exciting collaboration between the esteemed ESD Laboratory and Google Indonesia! This exclusive event brings together the expertise of ESD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
+    description: "Join us for an exciting collaboration between the esteemed EISD Laboratory and Google Indonesia! This exclusive event brings together the expertise of EISD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
     image: "./Winner.png",
     collaborators: 'Hafeezi Faruqi, Abdi Fatih, Hanan Rafif, Rafif Fadhil',
     link: "achievement_link_9",
@@ -82,7 +82,7 @@ export const achievementsData: Achievement[] = [
   },
   {
     name: "Achievement 10",
-    description: "Join us for an exciting collaboration between the esteemed ESD Laboratory and Google Indonesia! This exclusive event brings together the expertise of ESD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
+    description: "Join us for an exciting collaboration between the esteemed EISD Laboratory and Google Indonesia! This exclusive event brings together the expertise of EISD Laboratory, known for its cutting-edge research and innovation in Electrical Systems Design, and the industry-leading technology giant, Google.",
     image: "./Winner.png",
     collaborators: 'Hafeezi Faruqi, Abdi Fatih, Hanan Rafif, Rafif Fadhil',
     link: "achievement_link_10",

@@ -1,4 +1,4 @@
-const PREFIX = 'ESDLAB';
+const PREFIX = 'EISDLAB';
 
 const SIDEBAR = `${PREFIX}_SIDEBAR`;
 const USER = `${PREFIX}_USER`;

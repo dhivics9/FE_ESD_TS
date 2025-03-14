@@ -5,7 +5,7 @@ import {
   MaterialSymbolsEventListOutline,
   TdesignMember,
 } from "../../elements/Icon/Icon";
-import LogoNameEsd from "../../ui/LogoEsd/LogoNameESD";
+import LogoNameEisd from "../../ui/LogoEisd/LogoNameEISD";
 import { useTypedDispatch } from "../../../store";
 import { removeUser } from "../../../store/user";
 
@@ -69,7 +69,7 @@ const Sidebar = () => {
           className="drawer-overlay"
         ></label>
         <h1 className="p-6 text-center text-2xl font-bold"></h1>
-        <LogoNameEsd />
+        <LogoNameEisd />
         <ul className="l menu w-80 space-y-2 bg-[#ffffff] p-6 text-base ">
           {menuItemLinks.map((item, index) => (
             <Link to={item.path} key={index}>

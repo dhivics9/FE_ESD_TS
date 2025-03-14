@@ -19,7 +19,7 @@ const Events = () => {
             'Discover our exciting calendar of events where innovation meets excellence.'
           }
         >
-          ESD Laboratory List of Events
+          EISD Laboratory List of Events
         </HeadingBanner>
         <div
           className='max-sm:h-80 w-full'

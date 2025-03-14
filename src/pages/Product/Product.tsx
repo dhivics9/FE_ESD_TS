@@ -37,7 +37,7 @@ const Product = () => {
               " Powerful, self-serve product and growth analytics to help you convert, engage, and retain more users. Trusted by over 4,000 startups."
             }
           >
-            Products of ESD Laboratory
+            Products of EISD Laboratory
           </HeadingBanner>
         </div>
       </div>

@@ -2,7 +2,7 @@ export const ValuesData = [
   {
     iconPath: './mail.webp',
     name: 'Transforming Ideas into Reality',
-    value: 'Harness the power of our value ESD Laboratory to turn your innovative concepts into tangible solutions.'
+    value: 'Harness the power of our value EISD Laboratory to turn your innovative concepts into tangible solutions.'
   },
   {
     iconPath: '/zap.webp',

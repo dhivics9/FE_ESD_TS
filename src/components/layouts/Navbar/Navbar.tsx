@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ButtonGroup from "../../ui/ButtonGroup/ButtonGroup";
-import LogoNameEsd from "../../ui/LogoEsd/LogoNameESD";
+import LogoNameEisd from "../../ui/LogoEisd/LogoNameEISD";
 import { Button } from "../../elements/Button/Button";
 import Hamburger from "hamburger-react";
 import NavbarLink from "./view/NavbarLink";
@@ -16,16 +16,14 @@ const Navbar = () => {
     <div className="fixed w-full">
       <div className="relative z-20 flex flex-col border-b-[0.1px] border-[#e6e6e6] bg-[#ffffff]">
         <div className="container navbar mx-auto h-[80px] w-full max-w-[1440px] justify-between">
-          <div className="flex gap-10">
             <div className="mx-2 flex px-2">
-              <LogoNameEsd />
+              <LogoNameEisd />
             </div>
             <div className="hidden flex-none lg:block">
               <ul className="menu menu-horizontal gap-4">
                 <NavbarLink />
               </ul>
             </div>
-          </div>
           <ButtonGroup className="flex">
             <Button className="hidden sm:flex" variant="primary">
               Our Portfolio

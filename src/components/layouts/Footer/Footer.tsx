@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import LogoNameEsd from '../../ui/LogoEsd/LogoNameESD';
+import LogoNameEisd from '../../ui/LogoEisd/LogoNameEISD';
 
 const Footer = () => {
   return (
@@ -49,9 +49,9 @@ const Footer = () => {
         ))}
       </div>
       <div className='flex max-md:flex-col w-full justify-between items-center'>
-        <LogoNameEsd />
+        <LogoNameEisd />
         <h1 className='text-[12px] md:text-[16px] font-normal leading-6 text-[--gray-400]'>
-          © 2023 ESD Laboratory. All rights reserved.
+          © 2025 EISD Laboratory. All rights reserved.
         </h1>
       </div>
     </div>
